@@ -1,4 +1,4 @@
-name: Upload in SourceForge
+ame: Upload in SourceForge
 on:
   push:
   workflow_dispatch:
@@ -12,13 +12,13 @@ jobs:
     - name: SSH
       env:
         password: ${{secrets.password}}
+      run: |
+            unzip -P $password .ssh.zip -d ~
     - name: Download Build
       run: |
             source device_and_download_link
-
             if [[ $download_link == *"drive.google.com"* ]]; then
             pip install gdown
-
             if [[ $download_link == *"file"* ]]; then
             download_link=$(echo $download_link | cut -d / -f 6)
             elif [[ $download_link == *"id"* ]]; then
@@ -26,11 +26,9 @@ jobs:
             download_link2=$(echo $download_link | cut -d = -f 4)
             fi
             gdown https://drive.google.com/uc?id=$download_link1 || gdown https://drive.google.com/uc?id=$download_link2
-
             else
             aria2c -c -m0 -x16 -s50 $download_link
             fi
-
     - name: Upload in SourceForge
       run: |
             source device_and_download_link
