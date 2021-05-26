@@ -1,4 +1,4 @@
-ame: Upload in SourceForge
+name: Upload in SourceForge
 on:
   push:
   workflow_dispatch:
