@@ -12,8 +12,6 @@ jobs:
     - name: SSH
       env:
         password: ${{secrets.password}}
-      run: |
-            unzip -P $password .ssh.zip -d ~
     - name: Download Build
       run: |
             source device_and_download_link
@@ -37,4 +35,4 @@ jobs:
       run: |
             source device_and_download_link
 
-            rsync -vhcP -e ssh .zip* thecloverly@frs.sourceforge.net:/home/frs/project/realme6seriesdownloads/eleven/$device/
+            rsync -vhcP -e ssh *.zip thecloverly@frs.sourceforge.net:/home/frs/project/realme6seriesdownloads/eleven/$device/
