@@ -37,4 +37,4 @@ jobs:
       run: |
             source device_and_download_link
 
-            rsync -vhcP -e ssh PixelPlusUI* thecloverly@frs.sourceforge.net:/home/frs/project/realme6seriesdownloads/eleven/$device/
+            rsync -vhcP -e ssh .zip* thecloverly@frs.sourceforge.net:/home/frs/project/realme6seriesdownloads/eleven/$device/
